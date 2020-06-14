@@ -7,6 +7,9 @@ public class VisitDto {
     private LocalDateTime in;
     private LocalDateTime out;
 
+    public VisitDto() {
+    }
+
     public VisitDto(PersonDto cliient) {
         this.client = cliient;
         this.in = LocalDateTime.now();
