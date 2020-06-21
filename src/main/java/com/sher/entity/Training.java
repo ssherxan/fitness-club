@@ -1,17 +1,25 @@
-package com.sher.dto;
+package com.sher.entity;
+
+import com.sher.dto.PersonDto;
 
 import java.util.List;
 
-public class TrainingDto {
+
+public class Training {
+    private long Id;
     private String name;
     private PersonDto instructor;
     private List<PersonDto> clients;
 
-    public TrainingDto() {
+    public Training() {
     }
 
-    public TrainingDto(String name) {
-        this.name = name;
+    public long getId() {
+        return Id;
+    }
+
+    public void setId(long id) {
+        Id = id;
     }
 
     public String getName() {

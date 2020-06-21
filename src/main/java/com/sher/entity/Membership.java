@@ -1,19 +1,23 @@
-package com.sher.dto;
+package com.sher.entity;
 
 import java.time.LocalDate;
 
-public class AbonnementDto {
+public class Membership {
+    private long id;
     private LocalDate startDate;
     private LocalDate endDate;
-    private PersonDto person;
+    private Person person;
 
-    public AbonnementDto() {
+    public Membership() {
     }
 
-    public AbonnementDto(LocalDate startDate, LocalDate endDate, PersonDto person) {
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.person = person;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public LocalDate getStartDate() {
@@ -32,11 +36,11 @@ public class AbonnementDto {
         this.endDate = endDate;
     }
 
-    public PersonDto getPerson() {
+    public Person getPerson() {
         return person;
     }
 
-    public void setPerson(PersonDto person) {
+    public void setPerson(Person person) {
         this.person = person;
     }
 }
