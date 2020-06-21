@@ -1,12 +1,11 @@
 package com.sher;
 
 import org.modelmapper.ModelMapper;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@EnableAutoConfiguration
+//@EnableAutoConfiguration
 public class AppConfiguration {
     @Bean
     public ModelMapper modelMapper() {

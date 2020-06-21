@@ -1,10 +1,15 @@
 package com.sher.controller;
 
 import com.sher.dto.TrainingDto;
-import com.sher.entity.Training;
 import com.sher.service.TrainingService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -19,7 +24,7 @@ public class TrainingController {
     }
 
     @GetMapping("/{id}")
-    public List<TrainingDto> getTrainingsByTrenerId(@PathVariable long id){
+    public List<TrainingDto> getTrainingsByTrenerId(@PathVariable long id) {
         return trainingService.getTrainingsByInstructorId(id);
     }
 
@@ -29,7 +34,7 @@ public class TrainingController {
     }
 
     @PutMapping
-    public void update (@RequestBody TrainingDto trainingDto){
+    public void update(@RequestBody TrainingDto trainingDto) {
         trainingService.update(trainingDto);
 
     }

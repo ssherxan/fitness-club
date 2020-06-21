@@ -4,7 +4,14 @@ import com.sher.dto.MembershipDto;
 import com.sher.service.MembershipService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/membership")
@@ -16,9 +23,9 @@ public class MembershipController {
         this.membershipService = membershipService;
     }
 
-    @GetMapping("/person/{id}")
-    public MembershipDto getMembershipByPersonId(@PathVariable long id) {
-        return membershipService.getByPersonId(id);
+    @GetMapping("/{id}")
+    public MembershipDto getMembershipById(@PathVariable long id) {
+        return membershipService.getById(id);
     }
 
     @PostMapping(value = "/create", produces = MediaType.APPLICATION_JSON_VALUE)

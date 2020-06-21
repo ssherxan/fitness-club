@@ -9,5 +9,5 @@ public interface MembershipService {
 
     void updateMembership(MembershipDto membershipDto);
 
-    MembershipDto getByPersonId(long id);
+    MembershipDto getById(long id);
 }

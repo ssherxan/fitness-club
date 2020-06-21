@@ -4,8 +4,8 @@ import java.util.List;
 
 public class TrainingDto {
     private String name;
-    private PersonDto instructor;
     private List<PersonDto> clients;
+    private GymDto gymDto;
 
     public TrainingDto() {
     }
@@ -14,20 +14,20 @@ public class TrainingDto {
         this.name = name;
     }
 
+    public GymDto getGymDto() {
+        return gymDto;
+    }
+
+    public void setGymDto(GymDto gymDto) {
+        this.gymDto = gymDto;
+    }
+
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public PersonDto getInstructor() {
-        return instructor;
-    }
-
-    public void setInstructor(PersonDto instructor) {
-        this.instructor = instructor;
     }
 
     public List<PersonDto> getClients() {

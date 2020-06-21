@@ -1,15 +1,28 @@
 package com.sher.entity;
 
-import com.sher.dto.PersonDto;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import java.util.Set;
 
-import java.util.List;
-
-
+@Entity
 public class Training {
+    @ManyToMany
+    Set<Person> personSet;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "training_id")
     private long Id;
     private String name;
-    private PersonDto instructor;
-    private List<PersonDto> clients;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "gym_id", nullable = false)
+    private Gym gym;
 
     public Training() {
     }
@@ -30,19 +43,20 @@ public class Training {
         this.name = name;
     }
 
-    public PersonDto getInstructor() {
-        return instructor;
+    public Gym getGym() {
+        return gym;
     }
 
-    public void setInstructor(PersonDto instructor) {
-        this.instructor = instructor;
+    public void setGym(Gym gym) {
+        this.gym = gym;
     }
 
-    public List<PersonDto> getClients() {
-        return clients;
-    }
+//    public Set<Person> getPerson() {
+//        return persons;
+//    }
+//
+//    public void addPerson(Person person) {
+//        persons.add(person);
+//    }
 
-    public void setClients(List<PersonDto> clients) {
-        this.clients = clients;
-    }
 }

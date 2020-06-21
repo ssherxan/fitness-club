@@ -46,4 +46,14 @@ public class PersonDto {
     public void setAddress(AddressDto address) {
         this.address = address;
     }
+
+    @Override
+    public String toString() {
+        return "PersonDto{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", role=" + role +
+                ", address=" + address +
+                '}';
+    }
 }
