@@ -39,4 +39,13 @@ public class MembershipDto {
     public void setPerson(PersonDto person) {
         this.person = person;
     }
+
+    @Override
+    public String toString() {
+        return "MembershipDto{" +
+                "startDate=" + startDate +
+                ", endDate=" + endDate +
+                ", person=" + person +
+                '}';
+    }
 }

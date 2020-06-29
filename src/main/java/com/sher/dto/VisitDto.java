@@ -3,24 +3,23 @@ package com.sher.dto;
 import java.time.LocalDateTime;
 
 public class VisitDto {
-    private PersonDto client;
+    private PersonDto personDto;
     private LocalDateTime in;
     private LocalDateTime out;
 
     public VisitDto() {
     }
 
-    public VisitDto(PersonDto cliient) {
-        this.client = cliient;
-        this.in = LocalDateTime.now();
+    public VisitDto(PersonDto personDto) {
+        this.personDto = personDto;
     }
 
-    public PersonDto getClient() {
-        return client;
+    public PersonDto getPersonDto() {
+        return personDto;
     }
 
-    public void setClient(PersonDto client) {
-        this.client = client;
+    public void setPersonDto(PersonDto personDto) {
+        this.personDto = personDto;
     }
 
     public LocalDateTime getIn() {

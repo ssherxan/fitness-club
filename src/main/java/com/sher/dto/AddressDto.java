@@ -5,6 +5,9 @@ public class AddressDto {
     private int homeNumber;
     private int flatNumber;
 
+    public AddressDto() {
+    }
+
     public AddressDto(String street, int homeNumber, int flatNumber) {
         this.street = street;
         this.homeNumber = homeNumber;
@@ -33,5 +36,14 @@ public class AddressDto {
 
     public void setFlatNumber(int flatNumber) {
         this.flatNumber = flatNumber;
+    }
+
+    @Override
+    public String toString() {
+        return "AddressDto{" +
+                "street='" + street + '\'' +
+                ", homeNumber=" + homeNumber +
+                ", flatNumber=" + flatNumber +
+                '}';
     }
 }

@@ -1,0 +1,66 @@
+PersonDto
+ {
+ "firstName": "Vova",
+ "lastName": "Lenin",
+ "role": "INSTRUCTOR",
+ "address": {
+             "street": "Lenina",
+             "homeNumber": 321,
+             "flatNumber": 123
+         }
+ }
+
+ AddressDto
+{
+ "street": "Lenina",
+ "homeNumber": 321,
+  "flatNumber": 123
+}
+
+MembershipDto
+
+{
+"startDate":"2022-06-21",
+"endDate":"2023-06-21",
+"person":{
+ "firstName": "Vova",
+ "lastName": "Lenin",
+ "role": "INSTRUCTOR",
+ "address": {
+             "street": "Lenina",
+             "homeNumber": 321,
+             "flatNumber": 123
+            }
+        }
+}
+
+TrainingDto
+{
+    "name": "VIP",
+    "gymDto": {
+        "name": "Velo"
+    }
+
+}
+
+VisitDto
+{
+"in":"2017-07-09T11:06:22",
+"out":"2020-07-09T11:06:22",
+"personDto":{
+ "firstName": "Vova",
+ "lastName": "Lenin",
+ "role": "INSTRUCTOR",
+ "address": {
+             "street": "Lenina",
+             "homeNumber": 321,
+             "flatNumber": 123
+         }
+ }
+}
+
+GymDto
+
+{
+    "name": "Cach"
+}

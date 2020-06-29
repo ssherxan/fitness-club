@@ -1,11 +1,13 @@
 package com.sher.controller;
 
-import com.sher.dto.PersonDto;
-import com.sher.dto.Role;
 import com.sher.dto.VisitDto;
 import com.sher.service.VisitService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -19,13 +21,13 @@ public class VisitController {
         this.visitService = visitService;
     }
 
-    @GetMapping("/person/{id}")
-    public List<VisitDto> getVisitsByPersonId(@PathVariable long id) {
-        return visitService.getVisitsByPersonId(id);
+    @GetMapping
+    public List<VisitDto> getAllVisits() {
+        return visitService.getAllVisits();
     }
 
     @PostMapping("/create")
-    public void createVisitByPerson(@RequestBody PersonDto personDto){
-        visitService.createVisitByPerson(personDto);
+    public void createVisit(@RequestBody VisitDto visitDto) {
+        visitService.createVisit(visitDto);
     }
 }

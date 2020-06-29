@@ -8,24 +8,24 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
-public class Membership {
+public class Visit {
     @Id
-    @Column(name = "membership_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "visit_id")
     private long id;
-    private LocalDate startDate;
-    private LocalDate endDate;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "person_id", nullable = false)
     private Person person;
 
-    public Membership() {
-    }
+    private LocalDateTime inTime;
+    private LocalDateTime outTime;
 
+    public Visit() {
+    }
 
     public long getId() {
         return id;
@@ -35,20 +35,20 @@ public class Membership {
         this.id = id;
     }
 
-    public LocalDate getStartDate() {
-        return startDate;
+    public LocalDateTime getInTime() {
+        return inTime;
     }
 
-    public void setStartDate(LocalDate startDate) {
-        this.startDate = startDate;
+    public void setInTime(LocalDateTime inTime) {
+        this.inTime = inTime;
     }
 
-    public LocalDate getEndDate() {
-        return endDate;
+    public LocalDateTime getOutTime() {
+        return outTime;
     }
 
-    public void setEndDate(LocalDate endDate) {
-        this.endDate = endDate;
+    public void setOutTime(LocalDateTime outTime) {
+        this.outTime = outTime;
     }
 
     public Person getPerson() {
