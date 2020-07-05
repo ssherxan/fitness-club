@@ -17,9 +17,9 @@ import java.util.List;
 @RequestMapping("/persons")
 @RestController
 public class PersonController {
-    @Autowired
     private final PersonService personService;
 
+    @Autowired
     public PersonController(PersonService personService) {
         this.personService = personService;
     }
@@ -36,6 +36,7 @@ public class PersonController {
 
     @PostMapping("/create")
     public void create(@RequestBody PersonDto personDto) {
+
         personService.createPerson(personDto);
     }
 

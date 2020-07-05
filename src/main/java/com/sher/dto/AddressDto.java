@@ -1,9 +1,22 @@
 package com.sher.dto;
 
+import com.sher.entity.Person;
+
+import java.util.Set;
+
 public class AddressDto {
     private String street;
     private int homeNumber;
     private int flatNumber;
+    private Set<Person> persons;
+
+    public Set<Person> getPersons() {
+        return persons;
+    }
+
+    public void setPersons(Set<Person> persons) {
+        this.persons = persons;
+    }
 
     public AddressDto() {
     }

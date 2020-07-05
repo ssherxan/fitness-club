@@ -3,30 +3,46 @@ package com.sher.service;
 import com.sher.dto.AddressDto;
 import com.sher.entity.Address;
 import com.sher.repository.AddressRepository;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.logging.Logger;
 
 @Service
+@Transactional
 public class AddressServiceImpl implements AddressService {
     private final static Logger LOGGER = Logger.getLogger(AddressServiceImpl.class.getName());
-    @Autowired
     private final AddressRepository addressRepository;
-    @Autowired
-    private final ModelMapper modelMapper;
+    private final ConversionService conversionService;
 
-    public AddressServiceImpl(AddressRepository addressRepository, ModelMapper modelMapper) {
+    @Autowired
+    public AddressServiceImpl(AddressRepository addressRepository, ConversionService conversionService) {
         this.addressRepository = addressRepository;
-        this.modelMapper = modelMapper;
+        this.conversionService = conversionService;
     }
 
     @Override
-    public void createMembership(AddressDto addressDto) {
+    public void createAddress(AddressDto addressDto) {
         LOGGER.info("Address created");
-        Address address = modelMapper.map(addressDto, Address.class);
-        addressRepository.save(address);
+        Address address = conversionService.convert(addressDto, Address.class);
+        if (address != null) {
+            addressRepository.save(address);
+        }
+    }
 
+    @Override
+    public Set<AddressDto> getAll() {
+        List<Address> addresses = addressRepository.findAll();
+        Set<AddressDto> listAddressDto = new HashSet<>();
+        for (Address address : addresses) {
+            AddressDto addressDto = conversionService.convert(address, AddressDto.class);
+            listAddressDto.add(addressDto);
+        }
+        return listAddressDto;
     }
 }

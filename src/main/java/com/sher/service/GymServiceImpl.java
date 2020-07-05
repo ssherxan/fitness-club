@@ -5,28 +5,31 @@ import com.sher.entity.Gym;
 import com.sher.repository.GymReposistory;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.logging.Logger;
 
 @Service
+@Transactional
 public class GymServiceImpl implements GymService {
     private final static Logger LOGGER = Logger.getLogger(GymServiceImpl.class.getName());
-
-    @Autowired
     private final GymReposistory gymReposistory;
-    @Autowired
-    private final ModelMapper modelMapper;
+    private final ConversionService conversionService;
 
-    public GymServiceImpl(GymReposistory gymReposistory, ModelMapper modelMapper) {
+    @Autowired
+    public GymServiceImpl(GymReposistory gymReposistory, ConversionService conversionService) {
         this.gymReposistory = gymReposistory;
-        this.modelMapper = modelMapper;
+        this.conversionService = conversionService;
     }
 
     @Override
     public void createGym(GymDto gymDto) {
-        Gym gym = modelMapper.map(gymDto, Gym.class);
-        gymReposistory.save(gym);
+        Gym gym = conversionService.convert(gymDto, Gym.class);
+        if (gym != null) {
+            gymReposistory.save(gym);
+        }
         LOGGER.info("Gym created: " + gym);
     }
 }

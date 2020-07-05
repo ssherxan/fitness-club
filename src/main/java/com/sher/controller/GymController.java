@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/gym")
 public class GymController {
-    @Autowired
     private final GymService gymService;
 
+    @Autowired
     public GymController(GymService gymService) {
         this.gymService = gymService;
     }

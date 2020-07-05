@@ -4,9 +4,9 @@ PersonDto
  "lastName": "Lenin",
  "role": "INSTRUCTOR",
  "address": {
-             "street": "Lenina",
-             "homeNumber": 321,
-             "flatNumber": 123
+             "street": "Срфзфумф",
+             "homeNumber": 3,
+             "flatNumber": 3
          }
  }
 

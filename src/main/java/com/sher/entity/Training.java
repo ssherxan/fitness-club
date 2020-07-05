@@ -14,7 +14,8 @@ import java.util.Set;
 @Entity
 public class Training {
     @ManyToMany
-    Set<Person> personSet;
+    Set<Person> persons;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "training_id")
@@ -51,12 +52,19 @@ public class Training {
         this.gym = gym;
     }
 
-//    public Set<Person> getPerson() {
-//        return persons;
-//    }
-//
-//    public void addPerson(Person person) {
-//        persons.add(person);
-//    }
+    public Set<Person> getPerson() {
+        return persons;
+    }
 
+    public void addPerson(Person person) {
+        persons.add(person);
+    }
+
+    public Set<Person> getPersons() {
+        return persons;
+    }
+
+    public void setPersons(Set<Person> persons) {
+        this.persons = persons;
+    }
 }

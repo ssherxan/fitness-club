@@ -16,10 +16,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/membership")
 public class MembershipController {
-    @Autowired
     private final MembershipService membershipService;
 
+    @Autowired
     public MembershipController(MembershipService membershipService) {
+
         this.membershipService = membershipService;
     }
 

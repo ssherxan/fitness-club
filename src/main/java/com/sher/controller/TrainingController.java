@@ -16,9 +16,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/trainings")
 public class TrainingController {
-    @Autowired
     private final TrainingService trainingService;
 
+    @Autowired
     public TrainingController(TrainingService trainingService) {
         this.trainingService = trainingService;
     }
