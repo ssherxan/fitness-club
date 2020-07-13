@@ -1,10 +1,11 @@
 package com.sher.dto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TrainingDto {
     private String name;
-    private List<PersonDto> clients;
+    private List<PersonDto> persons;
     private GymDto gymDto;
 
     public TrainingDto() {
@@ -30,11 +31,18 @@ public class TrainingDto {
         this.name = name;
     }
 
-    public List<PersonDto> getClients() {
-        return clients;
+    public List<PersonDto> getPersons() {
+        return persons;
     }
 
-    public void setClients(List<PersonDto> clients) {
-        this.clients = clients;
+    public void setPersons(List<PersonDto> persons) {
+        this.persons = persons;
+    }
+
+    public void addPerson(PersonDto personDto) {
+        if (persons == null) {
+            persons = new ArrayList<>();
+        }
+        persons.add(personDto);
     }
 }

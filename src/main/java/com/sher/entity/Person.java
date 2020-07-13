@@ -1,26 +1,17 @@
 package com.sher.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.sher.dto.Role;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 
 @Entity
+@Table(name = "person")
 public class Person {
     @OneToMany(mappedBy = "person", cascade = CascadeType.ALL)
     private final List<Membership> memberships = new ArrayList<>();
@@ -36,8 +27,10 @@ public class Person {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "address_id", nullable = false)
+    @ManyToOne(cascade =  CascadeType.ALL, fetch=FetchType.LAZY)
+    @JoinColumn(name = "address_id",
+            referencedColumnName = "address_id",
+            insertable = false)
     private Address address;
 
     @OneToMany(mappedBy = "person", cascade = CascadeType.ALL)
@@ -118,6 +111,25 @@ public class Person {
 
     public void setTrainings(Set<Training> trainings) {
         this.trainings = trainings;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Person person = (Person) o;
+        return Objects.equals(memberships, person.memberships) &&
+                Objects.equals(firstName, person.firstName) &&
+                Objects.equals(lastName, person.lastName) &&
+                role == person.role &&
+                Objects.equals(address, person.address) &&
+                Objects.equals(visits, person.visits) &&
+                Objects.equals(trainings, person.trainings);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(memberships, firstName, lastName, role, address, visits, trainings);
     }
 
     @Override
